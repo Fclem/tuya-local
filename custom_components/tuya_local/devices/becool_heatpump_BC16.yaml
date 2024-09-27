@@ -23,13 +23,9 @@ primary_entity:
             - dps_val: "4"
               value: heat
     - id: 4
-      type: string # bitmap
+      type: integer # bitmap
       name: timer_func
       readonly: true
-      #maxlen: 2
-      #label:
-      #  - "1"
-      #  - "2"
     - id: 5
       type: string
       name: mode # set_mode
@@ -41,8 +37,6 @@ primary_entity:
       range:
         min: 13
         max: 32
-        #scale: 0
-        #step: 1
       mapping:
         - constraint: temperature_unit
           conditions:
@@ -73,29 +67,20 @@ primary_entity:
       type: integer
       name: off_timer_min
       unit: min
-      range:
+      range: #step: 60
         min: 0
         max: 1440
-        #scale: 0
-        #step: 60
     - id: 14
       type: integer
       name: on_timer_min
       unit: min
-      range:
+      range: #step: 60
         min: 0
         max: 1440
-        #scale: 0
-        #step: 60
     - id: 15
       type: string # bitmap
       name: fault
       readonly: true
-      #maxlen: 3
-      #label:
-      #  - "Lt"
-      #  - "PF"
-      #  - "Ft"
     - id: 16
       type: boolean
       name: swing_mode # wind
@@ -174,10 +159,10 @@ secondary_entities:
     translation_key: timer
     dps:
       - id: 4
-        type: string
+        type: integer
         name: sensor
         mapping:
-          - dps_val: "1"
+          - dps_val: 1
             value: "timer?"
-          - dps_val: "2"
+          - dps_val: 2
             value: "sleep?"
